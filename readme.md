@@ -1,10 +1,10 @@
 # WP Plugin Boilerplate
 
-Plugin short description
+Display and download simple author stats
 
 ## Description
 
-Plugin long description
+Display and download simple author stats
 
 Contact [Pete Nelson](https://twitter.com/gungeekatx)
 
@@ -20,11 +20,9 @@ FAQs here
 
 ## Changelog
 
-### v1.0 Month DD YYYY
+### v1.0 August 8 2015
 - Initial Release
 
 ## Roadmap
-
-- Roadmap here
 
 Pull requests are encouraged and welcome!

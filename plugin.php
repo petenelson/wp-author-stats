@@ -1,34 +1,32 @@
 <?php
 /*
-Plugin Name: wp-plugin-boilerplate
-Description: Description
+Plugin Name: WP Author Stats
+Description: Display and download author stats
 Author: Pete Nelson
 Version: 1.0.0
 */
 
-$plugin_class_file = 'plugin-name';
+$plugin_class_file = 'wp-author-stats';
 
 $includes = array(
 	'includes/class-' . $plugin_class_file . '-common.php',
 	'includes/class-' . $plugin_class_file . '-i18n.php',
-	'includes/class-' . $plugin_class_file . '.php',
 	'admin/class-' . $plugin_class_file . '-admin.php',
 );
 
-$class_base = 'My_Plugin_Name';
+$class_base = 'WP_Author_Stats';
 
 $classes = array(
 	$class_base . '_Common',
 	$class_base . '_i18n',
-	$class_base . '',
 	$class_base . '_Admin',
 );
 
 
 // activation hook
 register_activation_hook( __FILE__, function() {
-	require_once 'includes/class-plugin-name-activator.php';
-	My_Plugin_Name_Activator::activate();
+	require_once 'includes/class-wp-author-stats-activator.php';
+	WP_Author_Stats_Activator::activate();
 } );
 
 // include classes

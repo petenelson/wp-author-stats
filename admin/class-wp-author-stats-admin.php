@@ -2,9 +2,9 @@
 
 if ( ! defined( 'ABSPATH' ) ) die( 'restricted access' );
 
-if ( ! class_exists( 'My_Plugin_Name_Admin' ) ) {
+if ( ! class_exists( 'WP_Author_Stats_Admin' ) ) {
 
-	class My_Plugin_Name_Admin {
+	class WP_Author_Stats_Admin {
 
 
 		public function plugins_loaded() {
