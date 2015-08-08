@@ -212,22 +212,28 @@ if ( ! class_exists( 'WP_Author_Stats_Admin' ) ) {
 				$authors[ $p->post_author ]['post_count']++;
 				$authors[ $p->post_author ]['total_wordcount'] += str_word_count( strip_tags( $p->post_content ) );
 
+			}
 
-				if ( function_exists( 'stats_get_csv' ) ) {
-					array(
-						'days'     => -1,
-						'limit'    => -1,
-						'post_id'  => $p->ID,
-					);
+			$diff = date_diff( new DateTime( $args['date_query']['after'] ), new DateTime( $args['date_query']['before'] ) );
 
-					$result = stats_get_csv('postviews', $args);
-					if ( ! empty( $result ) ) {
-						$authors[ $p->post_author ]['total_pageviews'] += absint( $result[0]['views'] );
-					}
+			if ( function_exists( 'stats_get_csv' ) ) {
 
+				$args = array(
+					'days'     => 90, //$diff->days,
+					//'period'   => 'days',
+					//'end'      => date( 'Y-m-d', strtotime( $args['date_query']['before'] ) ),
+					'limit'    => 10,
+				);
+
+
+				$result = stats_get_csv('postviews', $args);
+				var_dump($result);
+				if ( ! empty( $result ) ) {
+				//	$authors[ $p->post_author ]['total_pageviews'] += absint( $result[0]['views'] );
 				}
 
 			}
+
 
 			return $authors;
 
