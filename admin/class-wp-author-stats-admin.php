@@ -179,7 +179,7 @@ if ( ! class_exists( 'WP_Author_Stats_Admin' ) ) {
 			$args = wp_parse_args( $args, array(
 				'post_status'             => 'publish',
 				'post_type'               => 'post',
-				'edit_posts_per_page'     => -1,
+				'posts_per_page'          => -1,
 				'update_post_meta_cache'  => false,
 				'update_post_term_cache'  => false,
 				'no_found_rows'           => true,
