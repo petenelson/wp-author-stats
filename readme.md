@@ -1,4 +1,4 @@
-# WP Plugin Boilerplate
+# WP Author Stats
 
 Display and download simple author stats
 
