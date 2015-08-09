@@ -212,27 +212,51 @@ if ( ! class_exists( 'WP_Author_Stats_Admin' ) ) {
 				$authors[ $p->post_author ]['post_count']++;
 				$authors[ $p->post_author ]['total_wordcount'] += str_word_count( strip_tags( $p->post_content ) );
 
+			}
 
-				if ( function_exists( 'stats_get_csv' ) ) {
+			$diff = date_diff( new DateTime( $args['date_query']['after'] ), new DateTime( $args['date_query']['before'] ) );
 
-					$args = array(
-						'days'      => -1,
-						'limit'     => -1,
-						'post_id'   => $p->ID,
-					);
+			// get page views for the date range
+			if ( function_exists( 'stats_get_csv' ) ) {
+
+				$args = array(
+					'days'     => $diff->days,
+					'period'   => 'days',
+					'end'      => date( 'Y-m-d', strtotime( $args['date_query']['before'] ) ),
+					'limit'    => -1,
+					summarize
+				);
 
 
-					$result = stats_get_csv('postviews', $args);
-					if ( ! empty( $result ) ) {
-						$authors[ $p->post_author ]['total_pageviews'] += absint( $result[0]['views'] );
+				$results = stats_get_csv('postviews', $args);
+				echo '<!--';
+				echo var_export( $results, true );
+				echo '-->';
+
+				if ( ! empty( $results ) ) {
+					foreach( $results as $result ) {
+						$p = get_post( $result['post_id'] );
+						if ( ! empty ( $p ) && 'post' === $p->post_type ) {
+
+							if ( ! array_key_exists( $p->post_author, $authors ) ) {
+								$author = new WP_User( $p->post_author );
+								$authors[ $p->post_author ] = array(
+									'display_name'    => $author->display_name,
+									'post_count'      => 0,
+									'total_pageviews' => 0,
+									'total_wordcount' => 0,
+									);
+							}
+
+							$authors[ $p->post_author ]['total_pageviews'] += absint( $result['views'] );
+
+						}
+
 					}
 
 				}
 
 			}
-
-			//$diff = date_diff( new DateTime( $args['date_query']['after'] ), new DateTime( $args['date_query']['before'] ) );
-
 
 
 			return $authors;
