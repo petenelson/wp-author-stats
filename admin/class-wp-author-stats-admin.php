@@ -229,6 +229,7 @@ if ( ! class_exists( 'WP_Author_Stats_Admin' ) ) {
 
 				$results = stats_get_csv('postviews', $args);
 				echo '<!--';
+				echo var_export( $args );
 				echo var_export( $results, true );
 				echo '-->';
 
