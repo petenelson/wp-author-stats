@@ -219,17 +219,17 @@ if ( ! class_exists( 'WP_Author_Stats_Admin' ) ) {
 			if ( function_exists( 'stats_get_csv' ) ) {
 
 				$args = array(
-					'days'     => 90, //$diff->days,
-					//'period'   => 'days',
-					//'end'      => date( 'Y-m-d', strtotime( $args['date_query']['before'] ) ),
-					'limit'    => 10,
+					'days'     => $diff->days,
+					'period'   => 'days',
+					'end'      => date( 'Y-m-d', strtotime( $args['date_query']['before'] ) ),
+					'limit'    => -1,
 				);
 
 
 				$result = stats_get_csv('postviews', $args);
 				var_dump($result);
 				if ( ! empty( $result ) ) {
-				//	$authors[ $p->post_author ]['total_pageviews'] += absint( $result[0]['views'] );
+					//$authors[ $p->post_author ]['total_pageviews'] += absint( $result[0]['views'] );
 				}
 
 			}
