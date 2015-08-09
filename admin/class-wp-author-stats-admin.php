@@ -224,7 +224,6 @@ if ( ! class_exists( 'WP_Author_Stats_Admin' ) ) {
 					'period'   => 'days',
 					'end'      => date( 'Y-m-d', strtotime( $args['date_query']['before'] ) ),
 					'limit'    => -1,
-					summarize
 				);
 
 
