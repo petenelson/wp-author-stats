@@ -212,27 +212,27 @@ if ( ! class_exists( 'WP_Author_Stats_Admin' ) ) {
 				$authors[ $p->post_author ]['post_count']++;
 				$authors[ $p->post_author ]['total_wordcount'] += str_word_count( strip_tags( $p->post_content ) );
 
-			}
 
-			$diff = date_diff( new DateTime( $args['date_query']['after'] ), new DateTime( $args['date_query']['before'] ) );
+				if ( function_exists( 'stats_get_csv' ) ) {
 
-			if ( function_exists( 'stats_get_csv' ) ) {
-
-				$args = array(
-					'days'     => $diff->days,
-					'period'   => 'days',
-					'end'      => date( 'Y-m-d', strtotime( $args['date_query']['before'] ) ),
-					'limit'    => -1,
-				);
+					$args = array(
+						'days'      => -1,
+						'limit'     => -1,
+						'post_id'   => $p->ID,
+					);
 
 
-				$result = stats_get_csv('postviews', $args);
-				var_dump($result);
-				if ( ! empty( $result ) ) {
-					//$authors[ $p->post_author ]['total_pageviews'] += absint( $result[0]['views'] );
+					$result = stats_get_csv('postviews', $args);
+					if ( ! empty( $result ) ) {
+						$authors[ $p->post_author ]['total_pageviews'] += absint( $result[0]['views'] );
+					}
+
 				}
 
 			}
+
+			//$diff = date_diff( new DateTime( $args['date_query']['after'] ), new DateTime( $args['date_query']['before'] ) );
+
 
 
 			return $authors;
