@@ -4,7 +4,8 @@ Display and download simple author stats
 
 ## Description
 
-Display and download simple author stats
+Display and download simple author stats.  Shows total posts, word count, and total post views (requires Jetpack) for a time frame.  Stats
+can also be downloaded via a comma-delimited file.
 
 Contact [Pete Nelson](https://twitter.com/gungeekatx)
 
@@ -20,7 +21,7 @@ FAQs here
 
 ## Changelog
 
-### v1.0 August 8 2015
+### v1.0.0 August 10 2015
 - Initial Release
 
 ## Roadmap

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP Author Stats
-Description: Display and download author stats
+Description: Display and download author stats (total posts, word count, and views using Jetpack)
 Author: Pete Nelson
 Version: 1.0.0
 */
