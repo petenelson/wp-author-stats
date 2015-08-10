@@ -14,6 +14,7 @@ Contact [Pete Nelson](https://twitter.com/gungeekatx)
 
 1. Upload the plugin-name directory to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Visit Tools > WP Author Stats
 
 ## Frequently Asked Questions
 
