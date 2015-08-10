@@ -28,7 +28,7 @@ if ( ! class_exists( 'WP_Author_Stats_Admin' ) ) {
 		private function parse_search_args() {
 			$args = array(
 				'date_query'     => array(
-					'after'         => date( 'm/d/Y', current_time( 'timestamp') -  ( DAY_IN_SECONDS * 365 ) ),
+					'after'         => date( 'm/d/Y', current_time( 'timestamp') -  ( DAY_IN_SECONDS * 30 ) ),
 					'before'        => date( 'm/d/Y', current_time( 'timestamp') ),
 					)
 				);
